@@ -13,6 +13,13 @@
       background: #fff;
       color: #333;
     }
+    @keyframes marbleMove {
+  0% { background-position: 0 0; }
+  100% { background-position: 100px 100px; }
+}
+.animate-marble {
+  animation: marbleMove 20s linear infinite;
+}
     .intro {
       max-width: 800px;
       margin: 80px auto;
@@ -93,7 +100,31 @@
   </style>
 </head>
 <body>
+<!-- Hero Section -->
+<section class="relative flex flex-col items-center justify-center text-center py-20 px-4 bg-gray-50 overflow-hidden">
+  <!-- 背景の大理石アニメーション -->
+  <div class="absolute inset-0">
+    <div class="w-full h-full bg-[url('https://www.transparenttextures.com/patterns/marble.png')] bg-cover opacity-30 animate-marble"></div>
+  </div>
 
+  <!-- 中央のプロフィール画像 -->
+  <div class="relative z-10">
+    <img src="https://source.unsplash.com/200x200/?portrait" 
+         alt="プロフィール画像" 
+         class="w-40 h-40 rounded-full object-cover border-4 border-white shadow-lg mx-auto mb-6">
+  </div>
+
+  <!-- 自己紹介文 -->
+  <div class="relative z-10 max-w-2xl">
+    <h1 class="text-3xl md:text-4xl font-bold mb-4">こんにちは、◯◯です</h1>
+    <p class="text-lg text-gray-600 mb-6">
+      Web制作とデザインを中心に活動しています。データを活用しながら、デザイン×マーケティングで成果の出るクリエイティブを目指しています。
+    </p>
+    <a href="#works" class="px-6 py-3 bg-blue-600 text-white font-medium rounded-full shadow hover:bg-blue-700 transition">
+      作品を見る
+    </a>
+  </div>
+</section>
   <section class="intro">
     <p>現在webディレクターとして活動中、デザインの勉強をしながらHP制作・バナー・フライヤーの制作をしております。</p>
     <button>お問い合わせ</button>
