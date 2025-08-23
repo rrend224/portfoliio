@@ -1,370 +1,164 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Portfolio — 模写コーディング版</title>
-  <meta name="description" content="Wixテンプレート風のポートフォリオ・単一HTML。画像とテキストを差し替えるだけで使えます。" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>模写コーディング - 中央部分</title>
   <style>
-    :root{
-      --bg:#0e0f12;          /* 背景 */
-      --panel:#15171c;       /* カード背景 */
-      --muted:#a4a8b3;       /* 薄い文字 */
-      --text:#e8eaf0;        /* 文字 */
-      --brand:#56d6a9;       /* アクセント */
-      --brand-2:#8aa3ff;     /* 補助アクセント */
-      --radius:18px;
-      --shadow:0 10px 30px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.04);
-      --gap:28px;            /* グリッド間隔 */
-      --maxw:1200px;         /* コンテナ最大幅 */
+    body {
+      font-family: 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      background: #fff;
+      color: #333;
     }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: Inter, "Noto Sans JP", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-      color:var(--text);
-      background: radial-gradient(1200px 800px at 80% -10%, rgba(138,163,255,.15), transparent 60%),
-                 radial-gradient(900px 700px at -10% 20%, rgba(86,214,169,.14), transparent 55%),
-                 var(--bg);
-      letter-spacing:.01em;
+    .intro {
+      max-width: 800px;
+      margin: 80px auto;
+      text-align: center;
+      padding: 0 20px;
     }
-    a{color:inherit;text-decoration:none}
-    .container{max-width:var(--maxw);margin:0 auto;padding:28px}
-
-    /* レイアウト */
-    .layout{
-      display:grid;
-      grid-template-columns: 280px 1fr; 
-      gap: var(--gap);
-      align-items:start;
+    .intro p {
+      font-size: 1.1rem;
+      margin-bottom: 20px;
     }
-    @media (max-width: 980px){
-      .layout{grid-template-columns:1fr}
+    .intro button {
+      padding: 10px 24px;
+      border: 1px solid #333;
+      background: transparent;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.3s;
+    }
+    .intro button:hover {
+      background: #333;
+      color: #fff;
     }
 
-    /* サイド（名刺） */
-    .card{
-      background:var(--panel);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      padding:26px;
-      position:sticky; top:28px;
+    .works {
+      max-width: 1200px;
+      margin: 100px auto;
+      padding: 0 20px;
     }
-    @media (max-width:980px){.card{position:static}}
-
-    .avatar{ width:88px; height:88px; border-radius:50%; background:linear-gradient(135deg, #8aa3ff, #56d6a9); display:inline-grid; place-items:center; font-weight:800; font-size:28px; color:#0b0c0f;}
-    .title{font-size:26px; font-weight:800; line-height:1.15; margin:18px 0 6px}
-    .role{color:var(--muted); font-size:14px}
-    .side-links{margin:22px 0 10px; display:flex; flex-wrap:wrap; gap:10px}
-    .chip{font-size:12px; color:#0b0c0f; background:linear-gradient(135deg, var(--brand), var(--brand-2)); padding:8px 10px; border-radius:999px; font-weight:700;}
-    .nav{margin-top:18px; display:grid; gap:8px}
-    .nav a{display:block; padding:10px 12px; border-radius:12px; color:var(--text); opacity:.9}
-    .nav a:hover{background:rgba(255,255,255,.05)}
-
-    /* メイン */
-    .main{display:grid; gap:var(--gap)}
-
-    /* ヒーロー */
-    .hero{
-      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      padding:38px; position:relative; overflow:hidden;
-      isolation:isolate;
+    .works h2 {
+      font-size: 1.8rem;
+      text-align: center;
+      margin-bottom: 40px;
     }
-    .hero::after{ /* 飾りグリッド */
-      content:""; position:absolute; inset:-40px -10px auto auto; width:420px; height:420px; 
-      background:
-        radial-gradient(closest-side, rgba(138,163,255,.35), transparent 70%),
-        conic-gradient(from 180deg at 50% 50%, rgba(86,214,169,.25), transparent 45%);
-      filter: blur(30px);
-      z-index:-1;
-      border-radius:50%; opacity:.6;
+    .work-item {
+      margin-bottom: 80px;
     }
-    .hero h1{font-size:clamp(28px, 4vw, 44px); line-height:1.1; margin:0 0 12px; font-weight:900}
-    .hero p{color:var(--muted); font-size:15px; max-width:64ch}
-    .cta{margin-top:18px; display:flex; gap:12px; flex-wrap:wrap}
-    .btn{padding:12px 16px; border-radius:12px; font-weight:700; display:inline-flex; align-items:center; gap:10px; border:1px solid rgba(255,255,255,.1);}
-    .btn.primary{background:linear-gradient(135deg, var(--brand), var(--brand-2)); color:#0b0c0f; border:none}
-    .btn:hover{transform:translateY(-1px)}
-
-    /* グリッド（作品） */
-    .grid{ display:grid; grid-template-columns: repeat(12, 1fr); gap:var(--gap) }
-    .tile{ grid-column: span 6; min-height:280px; background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)); border-radius:var(--radius); box-shadow:var(--shadow); position:relative; overflow:hidden }
-    .tile.tall{ min-height:380px }
-    .tile.small{ grid-column: span 4; min-height:220px }
-    .tile.wide{ grid-column: span 8 }
-    @media (max-width: 980px){
-      .grid{ grid-template-columns: 1fr; }
-      .tile, .tile.small, .tile.wide{ grid-column: 1 / -1 }
+    .work-item img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      display: block;
+      object-fit: cover;
     }
-    .tile .thumb{position:absolute; inset:0; background-size:cover; background-position:center; filter:saturate(1.05) contrast(1.05); opacity:.95}
-    .tile .veil{position:absolute; inset:0; background:linear-gradient(180deg, rgba(11,12,15,0) 30%, rgba(11,12,15,.65));}
-    .tile .info{position:absolute; left:18px; right:18px; bottom:18px; display:flex; align-items:flex-end; justify-content:space-between; gap:14px}
-    .tag{font-size:12px; padding:6px 10px; border-radius:999px; background:rgba(255,255,255,.12); backdrop-filter: blur(6px);}
-    .title-sm{font-weight:800; font-size:18px;}
-    .hover-zoom{transition: transform .5s cubic-bezier(.2,.7,.2,1)}
-    .tile:hover .hover-zoom{ transform: scale(1.05) }
-    .tile:hover{ outline: 2px solid rgba(138,163,255,.25) }
+    .work-item h3 {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+    }
+    .work-item p {
+      font-size: 1rem;
+      color: #555;
+    }
 
-    /* セクションヘッダ */
-    .section-head{display:flex; align-items:baseline; justify-content:space-between; gap:16px; margin-top:8px}
-    .section-head h2{font-size:22px; font-weight:900; letter-spacing:.02em; margin:0}
-    .muted{color:var(--muted)}
-
-    /* アバウト */
-    .about{ display:grid; grid-template-columns: 1.2fr .8fr; gap:var(--gap) }
-    @media (max-width: 980px){ .about{ grid-template-columns: 1fr } }
-    .panel{background:var(--panel); border-radius:var(--radius); box-shadow:var(--shadow); padding:28px}
-    .kpis{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:10px}
-    .kpi{background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)); border-radius:14px; padding:16px; text-align:center}
-    .kpi .num{font-size:26px; font-weight:900}
-
-    /* フッター */
-    footer{margin:32px 0 60px; color:var(--muted); font-size:14px; display:flex; gap:10px; flex-wrap:wrap; justify-content:space-between}
-
-    /* モーダル */
-    dialog{ width:min(900px, 94vw); border:none; border-radius:20px; padding:0; background:var(--panel); color:var(--text); box-shadow:0 20px 60px rgba(0,0,0,.5)}
-    dialog::backdrop{ background: rgba(0,0,0,.6) }
-    .modal-header{ display:flex; align-items:center; justify-content:space-between; gap:10px; padding:16px 18px; border-bottom:1px solid rgba(255,255,255,.06)}
-    .modal-body{ padding:20px 18px 26px; display:grid; gap:14px }
-    .close{ background:transparent; border:none; color:var(--text); font-weight:800; font-size:18px; padding:8px 10px; border-radius:10px }
-    .close:hover{ background:rgba(255,255,255,.06) }
-    .modal-hero{ aspect-ratio: 16 / 9; border-radius:14px; background:linear-gradient(135deg, rgba(138,163,255,.25), rgba(86,214,169,.25)); display:grid; place-items:center; font-weight:800 }
+    /* 簡易スライダー */
+    .slider {
+      position: relative;
+      overflow: hidden;
+    }
+    .slides {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+    .slide {
+      min-width: 100%;
+      box-sizing: border-box;
+    }
+    .slider-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.5);
+      color: #fff;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+    }
+    .slider-btn.prev { left: 10px; }
+    .slider-btn.next { right: 10px; }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="layout">
-      <!-- Side / Profile -->
-      <aside class="card" aria-label="プロフィール">
-        <div class="avatar" aria-hidden="true">UX</div>
-        <div class="title">Your Name</div>
-        <div class="role">Designer / Front‑end</div>
-        <div class="side-links">
-          <span class="chip">Portfolio</span>
-          <span class="chip">Branding</span>
-          <span class="chip">Web</span>
-        </div>
-        <nav class="nav" aria-label="セクションナビ">
-          <a href="#work">作品</a>
-          <a href="#about">プロフィール</a>
-          <a href="#contact">問い合わせ</a>
-        </nav>
-      </aside>
 
-      <!-- Main -->
-      <main class="main">
-        <!-- Hero -->
-        <section class="hero" id="top" aria-label="紹介">
-          <h1>ブランドを“伝わる体験”に変える、<br>UI/UXデザイナー</h1>
-          <p>
-            サイト/アプリのUI設計、ビジュアルデザイン、Web実装まで一気通貫で対応。ビジュアルとデータの両面から成果につながるクリエイティブを提供します。
-          </p>
-          <div class="cta">
-            <a class="btn primary" href="#work">制作実績を見る</a>
-            <a class="btn" href="#contact">相談する</a>
-          </div>
-        </section>
+  <section class="intro">
+    <p>現在ベルリンにて活動中。東京を拠点にこれまで、Kama、デザイン会、株式会社ネオーラ、LEMOなど多くの会社とデザイン活動してきました。チームのアイデンティティを生かしたブランドに仕上げます。</p>
+    <button>お問い合わせ</button>
+  </section>
 
-        <!-- Works -->
-        <div class="section-head" id="work">
-          <h2>Works</h2>
-          <span class="muted">近年のプロジェクト</span>
-        </div>
-        <section class="grid" aria-label="作品ギャラリー">
-          <!-- Tile 1 -->
-          <article class="tile wide" data-title="E‑commerce Redesign" data-tags="Web / UI" data-desc="ECブランドのリニューアル。CVR +24% を達成した情報設計とビジュアル刷新。" onclick="openModal(this)" aria-label="作品1">
-            <div class="thumb hover-zoom" style="background-image:url('https://images.unsplash.com/photo-1557825835-a526744f1847?q=80&w=1800&auto=format&fit=crop');"></div>
-            <div class="veil" aria-hidden="true"></div>
-            <div class="info">
-              <div>
-                <div class="title-sm">E‑commerce Redesign</div>
-                <div class="muted">Web / UI</div>
-              </div>
-              <span class="tag">Case Study</span>
-            </div>
-          </article>
-          <!-- Tile 2 -->
-          <article class="tile small" data-title="Fintech Mobile" data-tags="App / UX" data-desc="送金体験の摩擦を減らすフロー最適化とUIコンポーネント設計。" onclick="openModal(this)" aria-label="作品2">
-            <div class="thumb hover-zoom" style="background-image:url('https://images.unsplash.com/photo-1554215191-57f4bf9ab1b8?q=80&w=1600&auto=format&fit=crop');"></div>
-            <div class="veil"></div>
-            <div class="info">
-              <div>
-                <div class="title-sm">Fintech Mobile</div>
-                <div class="muted">App / UX</div>
-              </div>
-              <span class="tag">Prototype</span>
-            </div>
-          </article>
-          <!-- Tile 3 -->
-          <article class="tile tall" data-title="SaaS Dashboard" data-tags="Product / DataViz" data-desc="SaaS管理画面の情報設計。カード設計とダッシュボード指標の再構築。" onclick="openModal(this)" aria-label="作品3">
-            <div class="thumb hover-zoom" style="background-image:url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1800&auto=format&fit=crop');"></div>
-            <div class="veil"></div>
-            <div class="info">
-              <div>
-                <div class="title-sm">SaaS Dashboard</div>
-                <div class="muted">Product / DataViz</div>
-              </div>
-              <span class="tag">UI Kit</span>
-            </div>
-          </article>
-          <!-- Tile 4 -->
-          <article class="tile small" data-title="Brand Visuals" data-tags="Branding" data-desc="カラーシステムとタイポグラフィを基点にしたブランド刷新。" onclick="openModal(this)" aria-label="作品4">
-            <div class="thumb hover-zoom" style="background-image:url('https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?q=80&w=1600&auto=format&fit=crop');"></div>
-            <div class="veil"></div>
-            <div class="info">
-              <div>
-                <div class="title-sm">Brand Visuals</div>
-                <div class="muted">Branding</div>
-              </div>
-              <span class="tag">Style Guide</span>
-            </div>
-          </article>
-          <!-- Tile 5 -->
-          <article class="tile" data-title="Campaign LP" data-tags="Web / Marketing" data-desc="広告経由の集客に最適化したセクション設計とアニメーション。" onclick="openModal(this)" aria-label="作品5">
-            <div class="thumb hover-zoom" style="background-image:url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=1800&auto=format&fit=crop');"></div>
-            <div class="veil"></div>
-            <div class="info">
-              <div>
-                <div class="title-sm">Campaign LP</div>
-                <div class="muted">Web / Marketing</div>
-              </div>
-              <span class="tag">A/B Test</span>
-            </div>
-          </article>
-          <!-- Tile 6 -->
-          <article class="tile" data-title="Motion Reel" data-tags="Motion / 3D" data-desc="ブランドの世界観を伝える短尺モーショングラフィックス。" onclick="openModal(this)" aria-label="作品6">
-            <div class="thumb hover-zoom" style="background-image:url('https://images.unsplash.com/photo-1534777410147-084a460870fc?q=80&w=1800&auto=format&fit=crop');"></div>
-            <div class="veil"></div>
-            <div class="info">
-              <div>
-                <div class="title-sm">Motion Reel</div>
-                <div class="muted">Motion / 3D</div>
-              </div>
-              <span class="tag">Reel</span>
-            </div>
-          </article>
-        </section>
+  <section class="works">
+    <h2>作品紹介</h2>
 
-        <!-- About -->
-        <div class="section-head" id="about">
-          <h2>About</h2>
-          <span class="muted">自己紹介と強み</span>
-        </div>
-        <section class="about" aria-label="プロフィール">
-          <div class="panel">
-            <h3 style="margin:0 0 10px; font-size:18px">デザイン×マーケの二軸</h3>
-            <p class="muted">UI/UX・ビジュアルデザイン・フロント実装を横断。計測と改善を前提に、ブランドのらしさを保ちつつ成果に繋げる設計を行います。</p>
-            <ul style="margin:10px 0 0; padding-left:18px; line-height:1.9">
-              <li>Web / App UI設計（情報設計、デザインシステム）</li>
-              <li>LP・広告クリエイティブ（A/Bテスト、計測設計）</li>
-              <li>Next.js / HTML / CSS（コンポーネント化とパフォーマンス）</li>
-            </ul>
-            <div class="kpis">
-              <div class="kpi"><div class="num">+24%</div><div class="muted">CVR 改善</div></div>
-              <div class="kpi"><div class="num">120K</div><div class="muted">月間PV</div></div>
-              <div class="kpi"><div class="num">36</div><div class="muted">案件数</div></div>
-            </div>
-          </div>
-          <div class="panel">
-            <h3 style="margin:0 0 10px; font-size:18px">スキル</h3>
-            <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:10px">
-              <div>
-                <div class="muted">Design</div>
-                <div>Figma, Photoshop, Illustrator, After Effects</div>
-              </div>
-              <div>
-                <div class="muted">Code</div>
-                <div>HTML, CSS, JavaScript, React/Next.js</div>
-              </div>
-              <div>
-                <div class="muted">Ops</div>
-                <div>GA4, GTM, ABテスト, SEO基礎</div>
-              </div>
-              <div>
-                <div class="muted">Soft</div>
-                <div>要件定義 / ワークショップ / ファシリテーション</div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Contact -->
-        <div class="section-head" id="contact">
-          <h2>Contact</h2>
-          <span class="muted">ご相談はこちらから</span>
-        </div>
-        <section class="panel" aria-label="問い合わせ">
-          <form class="contact-form" onsubmit="event.preventDefault(); alert('送信しました（ダミー）');" style="display:grid; gap:14px">
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px">
-              <label style="display:grid; gap:6px">
-                <span class="muted">お名前</span>
-                <input required type="text" placeholder="山田 太郎" style="padding:12px 14px; border-radius:12px; border:1px solid rgba(255,255,255,.1); background:#0b0c0f; color:var(--text)">
-              </label>
-              <label style="display:grid; gap:6px">
-                <span class="muted">メール</span>
-                <input required type="email" placeholder="you@example.com" style="padding:12px 14px; border-radius:12px; border:1px solid rgba(255,255,255,.1); background:#0b0c0f; color:var(--text)">
-              </label>
-            </div>
-            <label style="display:grid; gap:6px">
-              <span class="muted">内容</span>
-              <textarea rows="5" placeholder="ご相談内容をお書きください" style="padding:12px 14px; border-radius:12px; border:1px solid rgba(255,255,255,.1); background:#0b0c0f; color:var(--text)"></textarea>
-            </label>
-            <button class="btn primary" style="width:max-content">送信する</button>
-          </form>
-        </section>
-
-        <footer>
-          <span>© <span id="year"></span> Your Name</span>
-          <span class="muted">Designed & coded — Wix風 模写</span>
-        </footer>
-      </main>
+    <div class="work-item">
+      <h3>Silk Skincare - Webデザイン</h3>
+      <img src="https://source.unsplash.com/1200x600/?skincare" alt="Skincare project">
+      <p>ブランドの魅力を最大限に伝えるビジュアルデザインで、プロジェクトの価値を高めました。</p>
     </div>
-  </div>
 
-  <!-- Modal (作品詳細) -->
-  <dialog id="modal">
-    <div class="modal-header">
-      <div>
-        <div id="m-title" class="title-sm">Project Title</div>
-        <div id="m-tags" class="muted" style="font-size:13px"></div>
+    <div class="work-item">
+      <h3>This is Us - SNSキャンペーン</h3>
+      <div class="slider">
+        <div class="slides">
+          <div class="slide"><img src="https://source.unsplash.com/1200x600/?fashion" alt="Slide 1"></div>
+          <div class="slide"><img src="https://source.unsplash.com/1200x600/?clothes" alt="Slide 2"></div>
+          <div class="slide"><img src="https://source.unsplash.com/1200x600/?model" alt="Slide 3"></div>
+        </div>
+        <button class="slider-btn prev">&#10094;</button>
+        <button class="slider-btn next">&#10095;</button>
       </div>
-      <button class="close" onclick="closeModal()">✕</button>
+      <p>SNS上で効果的に訴求するために制作されたデザイン。ターゲット層に強く訴求しました。</p>
     </div>
-    <div class="modal-body">
-      <div class="modal-hero">16:9 Preview</div>
-      <p id="m-desc" class="muted">説明テキストが入ります。</p>
-      <div style="display:flex; gap:10px; flex-wrap:wrap">
-        <a class="btn" href="#" onclick="event.preventDefault();">ライブを見る</a>
-        <a class="btn" href="#" onclick="event.preventDefault();">ケーススタディ</a>
-      </div>
+
+    <div class="work-item">
+      <h3>Trend Tech 2023 - イベントデザイン</h3>
+      <img src="https://source.unsplash.com/1200x600/?technology" alt="Tech Event">
+      <p>先進的なトレンドを表現するため、鮮やかなビジュアルと洗練されたレイアウトを実現しました。</p>
     </div>
-  </dialog>
+
+    <div class="work-item">
+      <h3>Moon - アプリデザイン</h3>
+      <img src="https://source.unsplash.com/1200x600/?app,ui" alt="App Design">
+      <p>ユーザーが直感的に利用できるよう設計されたアプリのデザイン。</p>
+    </div>
+
+    <div class="work-item">
+      <h3>Women Alliance - Webデザイン</h3>
+      <img src="https://source.unsplash.com/1200x600/?women,business" alt="Women Alliance">
+      <p>女性コミュニティの強さと美しさを引き出すデザインで、ブランドの存在感を高めました。</p>
+    </div>
+
+  </section>
 
   <script>
-    const yearEl = document.getElementById('year');
-    yearEl.textContent = new Date().getFullYear();
+    const slides = document.querySelector('.slides');
+    const prevBtn = document.querySelector('.prev');
+    const nextBtn = document.querySelector('.next');
+    let index = 0;
 
-    const modal = document.getElementById('modal');
-    const mTitle = document.getElementById('m-title');
-    const mTags  = document.getElementById('m-tags');
-    const mDesc  = document.getElementById('m-desc');
-
-    window.openModal = (el) => {
-      mTitle.textContent = el.dataset.title || 'Project';
-      mTags.textContent  = el.dataset.tags || '';
-      mDesc.textContent  = el.dataset.desc || '';
-      modal.showModal();
+    function showSlide(i) {
+      const total = document.querySelectorAll('.slide').length;
+      if (i < 0) index = total - 1;
+      else if (i >= total) index = 0;
+      else index = i;
+      slides.style.transform = `translateX(${-index * 100}%)`;
     }
-    window.closeModal = () => modal.close();
 
-    // アクセシビリティ: Escで閉じる
-    window.addEventListener('keydown', (e)=>{ if(e.key==='Escape' && modal.open) modal.close(); });
+    prevBtn.addEventListener('click', () => showSlide(index - 1));
+    nextBtn.addEventListener('click', () => showSlide(index + 1));
   </script>
+
 </body>
 </html>
