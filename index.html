@@ -3,193 +3,159 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>模写コーディング - 中央部分</title>
-  <style>
-    body {
-      font-family: 'Hiragino Sans', 'Noto Sans JP', sans-serif;
-      margin: 0;
-      padding: 0;
-      line-height: 1.6;
-      background: #fff;
-      color: #333;
-    }
-    @keyframes marbleMove {
-  0% { background-position: 0 0; }
-  100% { background-position: 100px 100px; }
-}
-.animate-marble {
-  animation: marbleMove 20s linear infinite;
-}
-    .intro {
-      max-width: 800px;
-      margin: 80px auto;
-      text-align: center;
-      padding: 0 20px;
-    }
-    .intro p {
-      font-size: 1.1rem;
-      margin-bottom: 20px;
-    }
-    .intro button {
-      padding: 10px 24px;
-      border: 1px solid #333;
-      background: transparent;
-      cursor: pointer;
-      font-size: 1rem;
-      transition: all 0.3s;
-    }
-    .intro button:hover {
-      background: #333;
-      color: #fff;
-    }
-
-    .works {
-      max-width: 1200px;
-      margin: 100px auto;
-      padding: 0 20px;
-    }
-    .works h2 {
-      font-size: 1.8rem;
-      text-align: center;
-      margin-bottom: 40px;
-    }
-    .work-item {
-      margin-bottom: 80px;
-    }
-    .work-item img {
-      width: 100%;
-      border-radius: 8px;
-      margin-bottom: 20px;
-      display: block;
-      object-fit: cover;
-    }
-    .work-item h3 {
-      font-size: 1.3rem;
-      margin-bottom: 10px;
-    }
-    .work-item p {
-      font-size: 1rem;
-      color: #555;
-    }
-
-    /* 簡易スライダー */
-    .slider {
-      position: relative;
-      overflow: hidden;
-    }
-    .slides {
-      display: flex;
-      transition: transform 0.5s ease;
-    }
-    .slide {
-      min-width: 100%;
-      box-sizing: border-box;
-    }
-    .slider-btn {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(0,0,0,0.5);
-      color: #fff;
-      border: none;
-      padding: 10px;
-      cursor: pointer;
-    }
-    .slider-btn.prev { left: 10px; }
-    .slider-btn.next { right: 10px; }
-  </style>
+  <title>Portfolio | Keisuke Uchida</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<!-- Hero Section -->
-<section class="relative flex flex-col items-center justify-center text-center py-20 px-4 bg-gray-50 overflow-hidden">
-  <!-- 背景の大理石アニメーション -->
-  <div class="absolute inset-0">
-    <div class="w-full h-full bg-[url('https://www.transparenttextures.com/patterns/marble.png')] bg-cover opacity-30 animate-marble"></div>
+  <div id="loading" aria-hidden="true">
+    <div class="loader"></div>
   </div>
 
-  <!-- 中央のプロフィール画像 -->
-  <div class="relative z-10">
-    <img src="https://source.unsplash.com/200x200/?portrait" 
-         alt="プロフィール画像" 
-         class="w-40 h-40 rounded-full object-cover border-4 border-white shadow-lg mx-auto mb-6">
-  </div>
+  <div class="site-layout">
+    <nav class="hero-menu" aria-label="Main menu">
+      <h1 class="logo"><a href="#top">• Keisuke Uchida</a></h1>
+      <ul>
+        <li><a href="#profile">PROFILE</a></li>
+        <li><a href="#works">WORKS</a></li>
+        <li><a href="#news">CAREER</a></li>
+        <li><a href="#pickup">PHOTO（iphone）</a></li>
+      </ul>
+      <p class="menu-sub">Web Director / Designer</p>
+    </nav>
 
-  <!-- 自己紹介文 -->
-  <div class="relative z-10 max-w-2xl">
-    <h1 class="text-3xl md:text-4xl font-bold mb-4">こんにちは、◯◯です</h1>
-    <p class="text-lg text-gray-600 mb-6">
-      Web制作とデザインを中心に活動しています。データを活用しながら、デザイン×マーケティングで成果の出るクリエイティブを目指しています。
-    </p>
-    <a href="#works" class="px-6 py-3 bg-blue-600 text-white font-medium rounded-full shadow hover:bg-blue-700 transition">
-      作品を見る
-    </a>
-  </div>
-</section>
-  <section class="intro">
-    <p>現在webディレクターとして活動中、デザインの勉強をしながらHP制作・バナー・フライヤーの制作をしております。</p>
-    <button>お問い合わせ</button>
-  </section>
-
-  <section class="works">
-    <h2>作品紹介</h2>
-
-    <div class="work-item">
-      <h3>Webデザイン</h3>
-      <img src="https://source.unsplash.com/1200x600/?skincare" alt="Skincare project">
-      <p>本質を求めデザインに反映することを常に意識しています</p>
-    </div>
-
-    <div class="work-item">
-      <h3>This is Us </h3>
-      <div class="slider">
-        <div class="slides">
-          <div class="slide"><img src="https://source.unsplash.com/1200x600/?fashion" alt="Slide 1"></div>
-          <div class="slide"><img src="https://source.unsplash.com/1200x600/?clothes" alt="Slide 2"></div>
-          <div class="slide"><img src="https://source.unsplash.com/1200x600/?model" alt="Slide 3"></div>
+    <main class="page-content" id="top">
+      <section class="hero section-block">
+        <div class="hero-headline-wrap">
+          <h2 class="hero-title">PORTFOLIO</h2>
+          <div class="hero-frog-stage" aria-hidden="true">
+            <div class="hero-frog-track">
+              <span class="hero-frog frog-one"></span>
+              <span class="hero-frog frog-two"></span>
+              <span class="hero-frog frog-three"></span>
+            </div>
+          </div>
         </div>
-        <button class="slider-btn prev">&#10094;</button>
-        <button class="slider-btn next">&#10095;</button>
-      </div>
-      <p>SNS上で効果的に訴求するために制作されたデザイン。ターゲット層に強く訴求しました。</p>
+      </section>
+
+      <section id="profile" class="profile section-block">
+        <p class="eyebrow">PROFILE</p>
+        <div class="profile-body">
+          <div class="profile-visual">
+            <img src="images/flog.jpg" alt="Keisuke Uchida">
+          </div>
+          <div class="profile-text">
+            <h3>Keisuke Uchida</h3>
+            <p>
+              内田圭亮のポートフォリオをご覧いただきありがとうございます。
+              デザインを学びながら、Web制作とビジュアル設計を中心に中心にwebディレクターとして働いています。
+              「見やすい」「伝わる」「印象に残る」を大切にしています。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="works" class="works section-block">
+        <p class="eyebrow">WORKS</p>
+        <div class="work-list">
+          <article class="work-item">
+            <button class="work-thumb js-open-lightbox" type="button" data-image="images/flyer01.jpg" data-alt="Flyer design 01">
+              <img src="images/flyer01.jpg" alt="Flyer design 01">
+            </button>
+            <h3>Flyer Design</h3>
+            <p>イベント告知向けに、視認性と訴求力を重視したフライヤーです。</p>
+          </article>
+          <article class="work-item">
+            <button class="work-thumb js-open-lightbox" type="button" data-image="images/flyer03.jpg" data-alt="Flyer design 02">
+              <img src="images/flyer03.jpg" alt="Flyer design 02">
+            </button>
+            <h3>Flyer Design</h3>
+            <p>ブランドイメージを保ちながら、情報の伝わりやすさを整えました。</p>
+          </article>
+          <article class="work-item">
+            <button class="work-thumb js-open-lightbox" type="button" data-image="images/flyer05.jpg" data-alt="Flyer design 03">
+              <img src="images/flyer05.jpg" alt="Flyer design 03">
+            </button>
+            <h3>Flyer Design</h3>
+            <p>紙面の視線誘導を意識し、必要な情報へ自然に目が流れる構成です。</p>
+          </article>
+          <article class="work-item">
+            <button class="work-thumb js-open-lightbox" type="button" data-image="images/flyer04.jpg" data-alt="Flyer design 04">
+              <img src="images/flyer04.jpg" alt="Flyer design 04">
+            </button>
+            <h3>Flyer Design</h3>
+            <p>ターゲットに合わせた配色とレイアウトで、印象に残る紙面を設計。</p>
+          </article>
+          <article class="work-item">
+            <button class="work-thumb js-open-lightbox" type="button" data-image="images/flyer06.jpg" data-alt="Flyer design 05">
+              <img src="images/flyer06.jpg" alt="Flyer design 05">
+            </button>
+            <h3>Flyer Design</h3>
+            <p>キャンペーン訴求に合わせ、要点が伝わる情報整理を行いました。</p>
+          </article>
+          <article class="work-item">
+            <button class="work-thumb js-open-lightbox" type="button" data-image="images/flyer09.jpg" data-alt="Flyer design 06">
+              <img src="images/flyer09.jpg" alt="Flyer design 06">
+            </button>
+            <h3>Flyer Design</h3>
+            <p>写真と文字のバランスを調整し、見やすさと世界観を両立しています。</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="exhibition" class="exhibition section-block">
+        <p class="eyebrow">Illustration</p>
+        <div class="exhibition-grid">
+          <button class="exhibition-card exhibition-card-image js-open-lightbox" type="button" data-image="images/flog.jpg" data-alt="Frog illustration">
+            <img src="images/flog.jpg" alt="Frog illustration">
+            <span>FROG</span>
+          </button>
+          <article class="exhibition-card exhibition-card-coming-soon"><span>COMING SOON</span></article>
+          <article class="exhibition-card exhibition-card-coming-soon"><span>COMING SOON</span></article>
+          <article class="exhibition-card exhibition-card-coming-soon"><span>COMING SOON</span></article>
+        </div>
+      </section>
+
+      <section id="news" class="news section-block">
+        <p class="eyebrow">CAREER</p>
+        <ul class="news-list">
+          <li><time datetime="2026-03-11">2026.3.11〜現在まで</time> 株式会社アール・エムにウェブディレクター職で入社<br>建設業界を軸に様々な案件を担当・担当した案件は100件以上</li>
+          <li><time datetime="2025-09-18">2025.9.18</time> 職業訓練校にてIllustrator・Photoshopを6ヶ月間学ぶ</li>
+          <li><time datetime="2025-08-14">2025.8.14</time> 株式会社五郎を退職後、デザイン関係で働くことを決意</li>
+          <li><time datetime="2024-04-1">2024.4.1</time> 株式会社五郎入社後、アパレル販売員として従事</li>
+          <li><time datetime="2023-03-031">2023.3.32</time> 天理大学卒業</li>
+        </ul>
+      </section>
+
+      <section id="pickup" class="pickup section-block">
+        <p class="eyebrow">PHOTO（iphone）</p>
+        <div class="pickup-grid">
+          <button class="pickup-card large js-open-lightbox" type="button" data-image="images/GALLERY.JPG" data-alt="iPhone photo 1">
+            <img src="images/GALLERY.JPG" alt="iPhone photo 1">
+          </button>
+          <button class="pickup-card js-open-lightbox" type="button" data-image="images/GALLERY2.JPG" data-alt="iPhone photo 2">
+            <img src="images/GALLERY2.JPG" alt="iPhone photo 2">
+          </button>
+          <button class="pickup-card js-open-lightbox" type="button" data-image="images/GALLERY3.JPG" data-alt="iPhone photo 3">
+            <img src="images/GALLERY3.JPG" alt="iPhone photo 3">
+          </button>
+          <button class="pickup-card js-open-lightbox" type="button" data-image="images/GALLERY4.JPG" data-alt="iPhone photo 4">
+            <img src="images/GALLERY4.JPG" alt="iPhone photo 4">
+          </button>
+          <button class="pickup-card js-open-lightbox" type="button" data-image="images/GALLERY5.JPG" data-alt="iPhone photo 5">
+            <img src="images/GALLERY5.JPG" alt="iPhone photo 5">
+          </button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="lightbox" id="lightbox" hidden>
+    <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Close image popup">×</button>
+    <div class="lightbox-inner">
+      <img id="lightboxImage" src="" alt="">
     </div>
+  </div>
 
-    <div class="work-item">
-      <h3>イベントデザイン</h3>
-      <img src="https://source.unsplash.com/1200x600/?technology" alt="Tech Event">
-      <p>先進的なトレンドを表現するため、鮮やかなビジュアルと洗練されたレイアウトを実現しました。</p>
-    </div>
-
-    <div class="work-item">
-      <h3>アプリデザイン</h3>
-      <img src="https://source.unsplash.com/1200x600/?app,ui" alt="App Design">
-      <p>ユーザーが直感的に利用できるよう設計されたアプリのデザイン。</p>
-    </div>
-
-    <div class="work-item">
-      <h3>Webデザイン</h3>
-      <img src="https://source.unsplash.com/1200x600/?women,business" alt="Women Alliance">
-      <p>ブランドの存在感を高めました。</p>
-    </div>
-
-  </section>
-
-  <script>
-    const slides = document.querySelector('.slides');
-    const prevBtn = document.querySelector('.prev');
-    const nextBtn = document.querySelector('.next');
-    let index = 0;
-
-    function showSlide(i) {
-      const total = document.querySelectorAll('.slide').length;
-      if (i < 0) index = total - 1;
-      else if (i >= total) index = 0;
-      else index = i;
-      slides.style.transform = `translateX(${-index * 100}%)`;
-    }
-
-    prevBtn.addEventListener('click', () => showSlide(index - 1));
-    nextBtn.addEventListener('click', () => showSlide(index + 1));
-  </script>
-
+  <script src="script.js"></script>
 </body>
 </html>
